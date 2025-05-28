@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewData["Title"] = "Scan URL";
+}
+@section Styles {
+<link href="~/css/url.css" rel="stylesheet" />
+}
+
+<section class="scanUrl d-flex justify-content-center align-items-center vh-100 text-center">
+    <div class="mx-auto">
+        <h1 class="fw-bold text-blue">Phishing Link (URL) Checker</h1>
+        <p class="fs-5">
+            Detect phishing or fraudulent links via an AI-powered real-time phishing link checker.
+        </p>
+        <form asp-action="CheckUrl" asp-controller="CheckUrl" method="POST">
+            <div class="input-group my-5 border border-primary rounded-5" style="max-width: 600px; margin: 0 auto;">
+                <input type="text"
+                class="form-control m-1 border-0 rounded-5"
+                placeholder="Enter Your URL Here"
+                name="url"
+                required
+                style="height: 40px; border-right: none; border-top-right-radius: 0; border-bottom-right-radius: 0;" />
+                <button 
+                    class="btn btn-blue rounded-5 w-25 h-25 m-auto me-1"
+                type="submit"
+                style="height: 60px; border-top-left-radius: 0; border-bottom-left-radius: 0;">
+                    Check
+                </button>
+            </div>
+        </form>
+        @if (!string.IsNullOrEmpty(ViewBag.Result))
+        {
+            @if (ViewBag.Result.Contains("Safe"))
+            {
+                <div class="alert bg-white text-black border-0 shadow fw-bold" style="max-width: 150px; margin: 0 auto;">
+                     <img src="~/Images/icons8-correct-24.png" class="pe-3" alt="Safe" />
+                     <span>Safe URL</span>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger text-black border-0 shadow fw-bold" style="max-width: 200px; margin: 0 auto;">
+                    <img src="~/Images/icons8-danger-24.png" class="pe-3" alt="Safe" />
+                    <span>@ViewBag.Result</span>
+                </div>
+            }
+        }
+    </div>
+</section>
+
+<!--How to use it - Tips -->
+<section class="container my-5">
+    <div class="howtouse row align-items-stretch">
+        <div class="col-md-6 d-flex">
+            <div class="w-100 shadow p-5 bg-white d-flex flex-column h-100">
+                <h2 class="fw-bold pb-4 text-blue">How To Use It</h2>
+                <ul class="list-unstyled flex-grow-1">
+                    <li class="mb-3">
+                        <strong>Enter a URL</strong><br />Paste the URL you want to
+                        check into the box for scanning.
+                    </li>
+                    <li class="mb-3">
+                        <strong>Scan for Risks</strong><br />The tool checks for
+                        common threats like malicious redirects and phishing attempts.
+                    </li>
+                    <li class="mb-3">
+                        <strong>Review Results</strong><br />Receive a straightforward
+                        report with information on any detected risks.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6 d-flex">
+            <div class="w-100 shadow p-5 bg-white d-flex flex-column h-100">
+                <h2 class="fw-bold pb-4 text-blue">Tips to Secure Yourself</h2>
+                <ul class="list-unstyled flex-grow-1">
+                    <li class="mb-3">
+                        <strong>Verify URLs Before Clicking</strong><br />Hover over
+                        links to check their real destination before clicking.
+                    </li>
+                    <li class="mb-3">
+                        <strong>Avoid Unsolicited Emails</strong><br />Don't trust
+                        emails asking for personal information or urgent actions.
+                    </li>
+                    <li class="mb-3">
+                        <strong>Use Two-Factor Authentication (2FA)</strong><br />Enable 2FA on important accounts to add an extra layer
+                        of security.
+                    </li>
+                    <li class="mb-3">
+                        <strong>Keep Software Updated</strong><br />Regularly update
+                        your operating system, browsers, and security software.
+                    </li>
+                    <li class="mb-3">
+                        <strong>Check for HTTPS</strong><br />Ensure websites use
+                        HTTPS before entering sensitive information.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelector("header")?.classList.replace("bg-transparent", "bg-blue");
+       
+                var input = document.querySelector("input[name='url']");
+                var button = document.querySelector("button[type='submit']");
+
+                input.addEventListener("input", function () {
+                    var url = input.value.trim();
+                    if (url !== " ") {
+                        button.classList.remove("disabled");
+                    } else {
+                        button.classList.add("disabled");
+                    }
+                });
+
+                setTimeout(function () {
+                        let alertBox = document.querySelector(".alert");
+                        if (alertBox) {
+                            alertBox.style.transition = "opacity 0.5s";
+                            alertBox.style.opacity = "0";
+                            setTimeout(() => alertBox.remove(), 500);
+                        }
+                }, 3000);
+        });
+
+    </script>
+}

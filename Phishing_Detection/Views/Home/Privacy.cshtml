@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<div class="container pt-5">
+    <div class="text-center">
+        <h1 class="fw-bold text-dark">@ViewData["Title"]</h1>
+        <p class="text-muted">
+            Our Privacy Policy agreements comply with the latest privacy laws to ensure transparency and trust.
+        </p>
+    </div>
+
+    <div class="bg-light p-4 rounded shadow-sm my-4">
+        <p class="text-secondary">
+            Having a Privacy Policy for your website or application is essential for building user trust and compliance
+            with data protection regulations. It defines how user data such as email, name, and browsing activity are
+            collected and managed.
+        </p>
+        <p class="text-secondary">
+            Our Privacy Policy ensures that all personal data is handled securely and transparently.
+        </p>
+    </div>
+
+    <div class="card border-0 shadow-sm p-4">
+        <div class="row">
+            <div class="col-md-5">
+                <img src="~/Images/privacy-policy-banner.webp" class="img-fluid rounded" alt="Privacy Policy">
+            </div>
+            <div class="col-md-7">
+                <h4 class="fw-semibold">Privacy Policy Overview</h4>
+                <p class="text-secondary">
+                    Our Privacy Policy outlines how we collect, use, and protect user data. We comply with regulations
+                    to safeguard your information and ensure transparency.
+                </p>
+
+                <h5 class="fw-semibold mt-3">Read the full Privacy Policy:</h5>
+
+                <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#privacyModal">
+                    Read More
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <div class="privacy-content">
+                    <h5 class="fw-semibold">1. Information We Collect</h5>
+                    <p class="text-secondary">
+                        We collect personal information such as email addresses, usernames, and browsing activity
+                        when using our phishing detection service.
+                    </p>
+
+                    <h5 class="fw-semibold mt-4">2. How We Use Your Information</h5>
+                    <ul class="list-unstyled ps-3">
+                        <li>• To provide and maintain our services.</li>
+                        <li>• To improve security and prevent fraudulent activities.</li>
+                        <li>• To communicate with users regarding updates or issues.</li>
+                    </ul>
+
+                    <h5 class="fw-semibold mt-4">3. Data Security</h5>
+                    <p class="text-secondary">
+                        We implement security measures to protect your personal information from unauthorized access.
+                    </p>
+
+                    <h5 class="fw-semibold mt-4">4. Third-Party Services</h5>
+                    <p class="text-secondary">
+                        We may use third-party services like VirusTotal or Google Safe Browsing API to detect phishing threats.
+                    </p>
+
+                    <h5 class="fw-semibold mt-4">5. Contact Information</h5>
+                    <p class="text-secondary">
+                        If you have any questions about our privacy policy, contact us at
+                        <a href="mailto:support@example.com" class="text-decoration-none fw-bold text-primary">
+                            support@example.com
+                        </a>.
+                    </p>
+                     <p class="text-muted text-center">Last updated: March 2025</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

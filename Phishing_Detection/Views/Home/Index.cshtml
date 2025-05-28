@@ -1,0 +1,307 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<link href="~/css/Navbar.css" rel="stylesheet" />
+
+    <!-- Home -->
+    <section id="Home"
+             class="d-flex align-items-center text-white vh-100 bg-cover">
+        <div class="container">
+            <h1 class="fw-bold">Protect Yourself from Phishing</h1>
+            <p class="fs-5">
+                Use our scanner to detect phishing links and stay safe online.
+            </p>
+            <a asp-action="Index" asp-controller="CheckUrl"
+               class="start-btn btn btn-lg btn-light fs-7 border border-primary text-blue rounded-4">Scan a URL</a>
+        </div>
+    </section>
+
+    <!--How to use it - Tips -->
+    <section class="container my-5">
+        <div class="howtouse row align-items-stretch">
+            <div class="col-md-6 d-flex">
+                <div class="w-100 shadow p-5 bg-white d-flex flex-column h-100">
+                    <h2 class="fw-bold pb-4 text-blue">How To Use It</h2>
+                    <ul class="list-unstyled flex-grow-1">
+                        <li class="mb-3">
+                            <strong>Enter a URL</strong><br />Paste the URL you want to
+                            check into the box for scanning.
+                        </li>
+                        <li class="mb-3">
+                            <strong>Scan for Risks</strong><br />The tool checks for
+                            common threats like malicious redirects and phishing attempts.
+                        </li>
+                        <li class="mb-3">
+                            <strong>Review Results</strong><br />Receive a straightforward
+                            report with information on any detected risks.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6 d-flex">
+                <div class="w-100 shadow p-5 bg-white d-flex flex-column h-100">
+                    <h2 class="fw-bold pb-4 text-blue">Tips to Secure Yourself</h2>
+                    <ul class="list-unstyled flex-grow-1">
+                        <li class="mb-3">
+                            <strong>Verify URLs Before Clicking</strong><br />Hover over
+                            links to check their real destination before clicking.
+                        </li>
+                        <li class="mb-3">
+                            <strong>Avoid Unsolicited Emails</strong><br />Don't trust
+                            emails asking for personal information or urgent actions.
+                        </li>
+                        <li class="mb-3">
+                            <strong>Use Two-Factor Authentication (2FA)</strong><br />Enable 2FA on important accounts to add an extra layer
+                            of security.
+                        </li>
+                        <li class="mb-3">
+                            <strong>Keep Software Updated</strong><br />Regularly update
+                            your operating system, browsers, and security software.
+                        </li>
+                        <li class="mb-3">
+                            <strong>Check for HTTPS</strong><br />Ensure websites use
+                            HTTPS before entering sensitive information.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="About" class="my-5 mx-0 bg-light">
+        <div class="row align-items-center">
+            <div class="col-md-6 gap-5 text-center">
+                <img src="~/Images/Group-1-5.png" class="w-100" alt="" />
+            </div>
+            <div class="col-md-6">
+                <h2 class="fw-bold pb-3 text-blue">About NoPhishing</h2>
+                <p>
+                    NoPhishing helps you stay safe from phishing scams by detecting
+                    malicious links in emails, messages, and websites. Our advanced
+                    detection system scans links for suspicious patterns to identify
+                    potential threats before you click.
+                </p>
+                <p>
+                    With NoPhishing’s security checker, you can avoid fake websites
+                    that attempt to steal your personal or financial information. By
+                    comparing links to a database of known phishing threats, our tool
+                    alerts you if a site is unsafe and provides details about its
+                    original and redirected URLs.
+                </p>
+                <p>
+                    Stay protected from phishing scams with NoPhishing—your reliable
+                    online security partner.
+                </p>
+            </div>
+        </div>
+    </section>
+
+<!-- Frequently Asked -->
+<section id="FAQ">
+    <div class="container my-5">
+        <h2 class="fw-bold text-blue mb-4">Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+            <!-- First Question -->
+            <div class="accordion-item rounded-3 mb-4">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed fs-5 fw-medium"
+                            style="height: 90px; box-shadow: none !important"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne"
+                            aria-expanded="false"
+                            aria-controls="collapseOne">
+                        How does NoPhishing work?
+                    </button>
+                </h2>
+                <div id="collapseOne"
+                     class="accordion-collapse collapse"
+                     aria-labelledby="headingOne"
+                     data-bs-parent="#faqAccordion">
+                    <div class="accordion-body fs-7">
+                        NoPhishing scans URLs for phishing attempts, such as
+                        suspicious redirects and deceptive links. By analyzing the
+                        structure and behavior of a link, our tool identifies risks
+                        and alerts users to avoid unsafe websites.
+                    </div>
+                </div>
+            </div>
+            <!-- Second Question -->
+            <div class="accordion-item rounded-3 mb-4">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed fs-5 fw-medium"
+                            style="height: 90px; box-shadow: none !important"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo"
+                            aria-expanded="false"
+                            aria-controls="collapseTwo">
+                        What does a "Safe URL" mean?
+                    </button>
+                </h2>
+                <div id="collapseTwo"
+                     class="accordion-collapse collapse"
+                     aria-labelledby="headingTwo"
+                     data-bs-parent="#faqAccordion">
+                    <div class="accordion-body fs-7">
+                        A "Safe URL" refers to a legitimate and safe website address
+                        that does not contain misleading or suspicious elements.
+                    </div>
+                </div>
+            </div>
+            <!-- Third Question -->
+            <div class="accordion-item mb-4">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed fs-5 fw-medium"
+                            style="height: 90px; box-shadow: none !important"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree"
+                            aria-expanded="false"
+                            aria-controls="collapseThree">
+                        What does a "Suspicious URL" mean?
+                    </button>
+                </h2>
+                <div id="collapseThree"
+                     class="accordion-collapse collapse"
+                     aria-labelledby="headingThree"
+                     data-bs-parent="#faqAccordion">
+                    <div class="accordion-body fs-7">
+                        A "Suspicious URL" may contain unusual characters,
+                        misspellings, or redirects to unknown sources, indicating
+                        possible phishing attempts.
+                    </div>
+                </div>
+            </div>
+            <!-- Fourth Question -->
+            <div class="accordion-item mb-4">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed fs-5 fw-medium"
+                            style="height: 90px; box-shadow: none !important"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour"
+                            aria-expanded="false"
+                            aria-controls="collapseFour">
+                        How to identify URL phishing?
+                    </button>
+                </h2>
+                <div id="collapseFour"
+                     class="accordion-collapse collapse"
+                     aria-labelledby="headingFour"
+                     data-bs-parent="#faqAccordion">
+                    <div class="accordion-body fs-7">
+                        While using our tool is a safe way to eliminate the risk of
+                        suspicious URLs, you can identify phishing attempts or
+                        malicious links with the naked eye. Ask yourself the following
+                        questions before clicking on any URL:
+                        <ul>
+                            <li>
+                                Is the URL misspelled or slightly different from the
+                                original website? (e.g., gooogle.com instead of google.com)
+                            </li>
+                            <li>
+                                Does the URL contain a lot of numbers or special characters?
+                            </li>
+                            <li>
+                                Is the URL asking for personal information or login
+                                credentials?
+                            </li>
+                            <li>
+                                Does the URL redirect you to a different website? (e.g., a
+                                shortened link)
+                            </li>
+                            <li>
+                                Is the URL from an unknown sender or source? (e.g.,
+                                unsolicited emails)
+                            </li>
+                            <li>
+                                Is the URL promising something that seems too good to be
+                                true? (e.g., free money, prizes)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Fifth Question -->
+            <div class="accordion-item mb-4">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed fs-5 fw-medium"
+                            style="height: 90px; box-shadow: none !important"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive"
+                            aria-expanded="false"
+                            aria-controls="collapseFive">
+                        What happens if you click on a malicious link?
+                    </button>
+                </h2>
+                <div id="collapseFive"
+                     class="accordion-collapse collapse"
+                     aria-labelledby="headingFive"
+                     data-bs-parent="#faqAccordion">
+                    <div class="accordion-body fs-7">
+                        Clicking on a malicious link can:
+                        <ul>
+                            <li>Install malware on your device</li>
+                            <li>
+                                Steal your personal information (e.g., passwords, credit
+                                card details)
+                            </li>
+                            <li>Redirect you to a phishing website</li>
+                            <li>Compromise your online accounts</li>
+                            <li>Infect your device with ransomware</li>
+                            <li>Lead to identity theft</li>
+                        </ul>
+                        Always be cautious with unfamiliar links and use security
+                        tools to protect your device.
+                    </div>
+                </div>
+            </div>
+            <!-- Sixth Question -->
+            <div class="accordion-item mb-4">
+                <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button collapsed fs-5 fw-medium"
+                            style="height: 90px; box-shadow: none !important"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseSix"
+                            aria-expanded="false"
+                            aria-controls="collapseSix">
+                        What can I do to prevent falling victim to phishing?
+                    </button>
+                </h2>
+                <div id="collapseSix"
+                     class="accordion-collapse collapse"
+                     aria-labelledby="headingSix"
+                     data-bs-parent="#faqAccordion">
+                    <div class="accordion-body fs-7">
+                        Be cautious about unsolicited messages, verify sources before
+                        sharing personal information, enable two-factor
+                        authentication, and regularly update your passwords. Education
+                        and awareness are key to staying safe from phishing attacks.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Contact Us  -->
+    <section>
+        <div class="container my-5 p-5 rounded shadow text-center">
+            <h2 class="fw-bold text-blue mb-4">Have More Questions?</h2>
+            <p class="fs-5 text-muted">
+                If you have any questions or concerns about phishing scams, online
+                security, or our tool, feel free to contact us. Our team is here to
+                help you stay safe online and protect your personal information from
+                cyber threats.
+            </p>
+            <a href="contact.html" class="btn btn-lg btn-blue rounded-5 px-4 mt-3">Contact Us</a>
+        </div>
+    </section>
+
+

@@ -1,0 +1,70 @@
+﻿@{
+    var pageTitle = @ViewData["Title"];
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout != null)
+    {
+        Layout = parentLayout.ToString();
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+@if (IsSectionDefined("Styles"))
+{
+    @RenderSection("Styles", required: false)
+}
+
+
+@if (pageTitle == "My Profile" || pageTitle == "URL Check History")
+{
+    <div class="ProfileContainer d-flex justify-content-between mx-0">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-4 col-md-4 d-none d-md-block ps-3">
+                <div class="position-sticky" style="top: 80px;">
+                    <partial name="_ManageNav" />
+                </div>
+            </div>
+
+
+            <!-- Main Content -->
+            <div class="col-lg-8 col-md-8 pe-md-3">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    <div class="ProfileContainer container mx-0">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-4 col-md-4 d-none d-md-block ps-0">
+                <div class="position-sticky" style="top: 80px;">
+                    <partial name="_ManageNav" />
+                </div>
+            </div>
+
+
+            <!-- Main Content -->
+            <div class="col-lg-8 col-md-8 pe-md-3">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+}
+
+@if (IsSectionDefined("Scripts"))
+{
+    @RenderSection("Scripts", required: false)
+}
+
+<!-- Styles -->
+<style>
+    .ProfileContainer {
+        margin-top: 80px;
+    }
+</style>

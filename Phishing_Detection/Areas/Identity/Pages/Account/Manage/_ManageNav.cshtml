@@ -1,0 +1,69 @@
+﻿@using Phishing_Detection.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+    var user = await UserManager.GetUserAsync(User);
+}
+<div class="d-flex flex-column flex-shrink-0 p-3  bg-light sidebar vh-100" style="width: 300px">
+    <h5 class="text-dark mt-3 ">Welcome, @user.FirstName @user.LastName </h5>
+    <hr class="w-100 mb-4">
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext) text-dark" id="profile" asp-page="./Index">
+                <i class="bi bi-person"></i> Profile
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @ManageNavPages.EmailNavClass(ViewContext) text-dark" id="email" asp-page="./Email">
+                <i class="bi bi-envelope"></i> Email
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext) text-dark" id="change-password" asp-page="./ChangePassword">
+                <i class="bi bi-key"></i> Password
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @ManageNavPages.HistoryNavClass(ViewContext) text-dark" id="change-password" asp-page="./History">
+                <i class="bi bi-key"></i> History
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  text-dark" id="change-password" asp-action="Privacy" asp-controller="Home" >
+                <i class="bi bi-key"></i> Privacy Policy
+            </a>
+        </li>
+        @if (hasExternalLogins)
+        {
+            <li class="nav-item">
+                <a class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext) text-dark" id="external-login" asp-page="./ExternalLogins">
+                    <i class="bi bi-box-arrow-in-right"></i> External logins
+                </a>
+            </li>
+        }
+        @* <li class="nav-item"> *@
+        @*     <a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext) text-dark" id="two-factor" asp-page="./TwoFactorAuthentication"> *@
+        @*         <i class="bi bi-shield-lock"></i> Two-factor authentication *@
+        @*     </a> *@
+        @* </li> *@
+        @* <li class="nav-item"> *@
+        @*     <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext) text-dark" id="personal-data" asp-page="./PersonalData"> *@
+        @*         <i class="bi bi-person-lines-fill"></i> Personal data *@
+        @*     </a> *@
+        @* </li> *@
+    </ul>
+</div>
+
+<style>
+    .sidebar .nav-link {
+        padding: 10px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            background-color: rgba(29,60,148,255);
+            color: white !important;
+        }
+</style>

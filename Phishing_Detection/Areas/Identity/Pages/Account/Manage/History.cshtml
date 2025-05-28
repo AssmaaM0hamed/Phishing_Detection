@@ -1,0 +1,90 @@
+﻿@page
+@model Phishing_Detection.Areas.Identity.Pages.Account.Manage.HistoryModel
+@{
+    ViewData["Title"] = "URL Check History";
+}
+
+<div class="container-fluid my-5 px-5">
+
+    <h2 class="fw-bold text-blue mb-5">Your Checked URLs</h2>
+    <div class="d-flex justify-content-end mb-3">
+        <input type="text" placeholder="Search..." id="checkedUrlsList" class="form-control w-25" />
+
+        <select id="searchType" class="form-select w-auto me-2 ">
+            <option value="all">All</option>
+            <option value="url">URL</option>
+            <option value="status">Status</option>
+        </select>
+    </div>
+
+    @if (Model.CheckedUrls.Any())
+    {
+        <div class="card shadow-sm p-4" style="width: 100%">
+            <table class="table table-hover ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>URL</th>
+                        <th>Status</th>
+                        <th class="w-100">Checked Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var url in Model.CheckedUrls)
+                    {
+                        <tr>
+                            <td>@url.Url</td>
+                            <td>
+                                @if (url.Status == "Safe")
+                                {
+                                  <div class="bg-success text-center rounded-3 text-white bg-opacity-75">
+                                      <span >Safe</span>
+                                  </div>
+                                }
+                                else
+                                {
+                                  <div class="bg-danger text-center rounded-3 text-white bg-opacity-75 fs-6 p-1">
+                                      <span>Suspicious</span>
+                                  </div>
+                                }
+                            </td>
+                            <td>@url.CheckedAt.ToString("yyyy-MM-dd")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">
+            <p>No URLs have been checked yet.</p>
+            <a asp-controller="CheckUrl" asp-action="Index" class="btn btn-blue">Check a URL Now</a>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('checkedUrlsList').addEventListener('input', function() {
+            let searchValue = this.value.toLowerCase();
+            let searchType = document.getElementById('searchType').value;
+            let rows = document.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                let url = row.cells[0].textContent.toLowerCase();
+                let status = row.cells[1].textContent.toLowerCase();
+                let match = false;
+
+                if (searchType === "url") {
+                    match = url.includes(searchValue);
+                } else if (searchType === "status") {
+                    match = status.includes(searchValue);
+                } else {
+                    match = url.includes(searchValue) || status.includes(searchValue);
+                }
+
+                row.style.display = match ? "" : "none";
+            });
+        });
+    </script>
+}

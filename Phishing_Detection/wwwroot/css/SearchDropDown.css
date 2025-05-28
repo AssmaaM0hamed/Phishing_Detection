@@ -1,0 +1,23 @@
+﻿.custom-select {
+    appearance: none; /* Remove default select styles */
+    background-color: blue; /* Make background blue */
+    color: white; /* Text color white */
+    padding-right: 30px; /* Space for custom arrow */
+    border: 1px solid blue;
+    position: relative;
+    font-weight: bold;
+}
+
+    /* Custom white arrow */
+.custom-select::-ms-expand {
+        display: none; /* Hide default arrow in IE */
+}
+.custom-select::after {
+        content: "▼"; /* Unicode for dropdown arrow */
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: red; /* Set arrow color to white */
+        pointer-events: none;
+}

@@ -1,0 +1,74 @@
+﻿@page
+@model IndexModel
+@{
+    var birthDate = Model.Input.DateOfBirth;
+    var today = DateTime.Today;
+    var age = today.Year - birthDate.Year;
+    if (birthDate.Date > today.AddYears(-age)) age--;
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-blue">My Profile</h2>
+        <a class="btn btn-blue px-4" asp-page="./UpdateUserData">Update</a>
+    </div>
+
+    <div class="card shadow-sm p-4 mb-4">
+        <h5 class="fw-bold">Login information</h5>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <p class="mb-1 text-muted">Username</p>
+                <p class="fw-bold">@Model.Input.FirstName@Model.Input.LastName</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <a asp-page="./ChangePassword" class="text-primary text-decoration-none">Change password</a>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <p class="mb-1 text-muted">Email</p>
+                <p class="fw-bold">@Model.Input.Email</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <a asp-page="./Email" class="text-primary text-decoration-none">Change email</a>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <p class="mb-1 text-muted">Login Date</p>
+                <p class="fw-bold">@(Model.Input.LastLoginDate?.ToString("yyyy-MM-dd") ?? "No login data")</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="card shadow-sm p-4">
+        <h5 class="fw-bold">Personal information</h5>
+        <hr />
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label text-muted">First name</label>
+                <input type="text" class="form-control" value="@Model.Input.FirstName" disabled>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label text-muted">Last name</label>
+                <input type="text" class="form-control" value="@Model.Input.LastName" disabled>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label text-muted">Date Of Birth</label>
+                <input type="text" class="form-control" value="@Model.Input.DateOfBirth.ToString("yyyy-MM-dd") " disabled />
+            </div>
+            <div class="col-md-4">
+                <label class="form-label text-muted">Age</label>
+                <input type="text" class="form-control" value="@age" disabled />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

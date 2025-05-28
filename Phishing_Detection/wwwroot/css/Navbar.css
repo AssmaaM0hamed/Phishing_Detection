@@ -1,0 +1,84 @@
+﻿body{
+    margin:0;
+    padding: 0;
+}
+
+.navbar-nav .nav-link,
+.navbar-brand {
+    color: white !important;
+}
+
+    /* Change link text color on hover */
+    .navbar-nav .nav-link:hover,
+    .dropdown-item:hover ,a  {
+        cursor: pointer;
+    }
+
+/* Open dropdown on hover */
+.navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+#Home {
+    background-image: url('../Images/Phishing-URL-Checker.jpg');
+    background-size: cover;
+}
+
+.start-btn:hover {
+    background-color: rgba(24,62,180,255);
+    color: white;
+    border: 1px solid white !important;
+}
+
+.fs-7 {
+    font-size: 1.1rem !important;
+}
+
+.img-small {
+    width: 30px; /* Adjust this value to make it smaller or larger */
+    height: auto;
+}
+
+.text-blue {
+    color: rgba(1,100,200,255);
+}
+
+.bg-gray {
+    background-color: #f3f3f3;
+}
+
+.btn-blue {
+    background-color: rgba(29,60,148,255);
+    color: white;
+}
+
+    .btn-blue:hover {
+        background-color: rgba(1,95,250,255);
+        color: white;
+    }
+
+.bg-blue {
+    background-color: rgba(29,60,148,255);
+}
+
+#navbar {
+    transition: background-color 0.5s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+footer {
+    min-height: 300px; /* Adjust based on needs */
+}
+/* Ensure dropdown opens on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* Fix positioning */
+}
+
+/* Style the user image */
+.user-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+  
+}

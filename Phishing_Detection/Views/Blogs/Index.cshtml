@@ -1,0 +1,162 @@
+﻿@{
+	ViewData["Title"] = "Blogs";
+}
+@section Styles {
+    <link href="~/css/Blogs.css" rel="stylesheet" />
+}
+
+
+<section>
+    <div class="container w-75 my-5 rounded-4 shadow text-center" style="background-color: rgba(245,250,255,255); padding:100px;">
+        <h1 class="text-blue mb-4">Expert Advice <br /> <span class="text-dark"> and Industry Updates </span></h1>
+        <p class=" text-muted">
+            Your go-to source for tips and updates on phishing prevention, cybersecurity trends, and best practices to protect your data.
+        </p>
+    </div>
+</section>
+<!-- Articles Section -->
+<section>
+    <div class="container w-75 my-5 pt-5">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <!-- Article 1 -->
+            <div class="col">
+                <div class="card  h-100 articleCard rounded-4 ">
+                    <img src="~/Images/blog5.jpg" class=" rounded-top-4" alt="Phishing Graphic">
+                    <div class="card-body d-flex flex-column">
+                        <div class="flex-grow-1">
+                            <h6 class="card-title  mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                The Future of Phishing & Malicious Links: Predictions & Security Strategies
+                            </h6>
+                            <p class="card-text text-secondary fw-light mb-2" style="white-space: normal; line-height: 1;">
+                                <small>The digital age has revolutionized how we connect, communicate, and transact, but it has also opened the door to a...</small>
+                            </p>
+
+                        </div>
+                        <a asp-action="FutureOfPhishingArticle" asp-controller="Blogs" class="text-primary text-decoration-none mt-auto">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Article 2 -->
+            <div class="col">
+                <div class="card h-100 articleCard rounded-4">
+                    <img src="~/Images/blog2.jpg" class=" rounded-top-4" alt="Mobile Safety Graphic">
+                    <div class="card-body d-flex flex-column">
+                        <div class="flex-grow-1">
+                            <h6 class="card-title mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                Malicious Links on Mobile Devices: Stay Safe on the Go
+                            </h6>
+                            <p class="card-text text-secondary fw-light mb-2" style="white-space: normal; line-height: 1;">
+                                <small> As mobile devices have become integral to our everyday activities, cybercriminals are increasingly targeting these platforms</small>
+                            </p>
+                        </div>
+                        <a asp-action="MobileMalwareArticle" asp-controller="Blogs" class="text-primary text-decoration-none mt-auto">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Article 3 -->
+            <div class="col">
+                <div class="card h-100 articleCard rounded-4">
+                    <img src="~/Images/blog1.jpg" class=" rounded-top-4" alt="Security Tools Graphic">
+                    <div class="card-body d-flex flex-column">
+                        <div class="flex-grow-1">
+                            <h6 class="card-title  mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                Best Security Tools to Detect Malicious Links
+                            </h6>
+                            <p class="card-text text-secondary fw-light mb-2" style="white-space: normal; line-height: 1;">
+                                <small>  With the increasing sophistication of cyber threats, malicious links have become a common vector for phishing attacks </small>
+                            </p>
+                        </div>
+                        <a asp-action="SecurityToolsArticle" asp-controller="Blogs" class="text-primary text-decoration-none mt-auto">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Article 4 -->
+            <div class="col">
+                <div class="card h-100 articleCard rounded-4">
+                    <img src="~/Images/blog3.jpg" class=" rounded-top-4" alt="Phishing Types Graphic">
+                    <div class="card-body d-flex flex-column">
+                        <div class="flex-grow-1">
+                            <h6 class="card-title  mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                12 Common Types of Phishing Attacks and How to Protect Yourself
+                            </h6>
+                            <p class="card-text text-secondary fw-light mb-2" style="white-space: normal; line-height: 1;">
+								<small> Phishing attacks come in various forms, each designed to deceive victims into revealing sensitive information or taking</small>
+                            </p>
+                        </div>
+                        <a asp-action="TypesOfPhishingArticle" asp-controller="Blogs" class="text-primary text-decoration-none mt-auto">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Article 5 -->
+            <div class="col">
+                <div class="card h-100 articleCard rounded-4">
+                    <img src="~/Images/blog4.jpg" class=" rounded-top-4" alt="Phishing 101 Graphic">
+                    <div class="card-body d-flex flex-column">
+                        <div class="flex-grow-1">
+                            <h6 class="card-title  mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                Phishing 101: Your Complete Guide to Preventing Scams
+                            </h6>
+                            <p class="card-text text-secondary fw-light mb-2" style="white-space: normal; line-height: 1;">
+								<small>  Phishing 101: Your Complete Guide to Preventing Scams</small>
+                            </p>
+                        </div>
+                        <a asp-action="PhishingArticle" asp-controller="Blogs" class="text-primary text-decoration-none mt-auto">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Article 6 -->
+            <div class="col">
+                <div class="card h-100 articleCard rounded-4">
+                    <img src="~/Images/blog6.jpg" class=" rounded-top-4" alt="Phishing Email Graphic">
+                    <div class="card-body d-flex flex-column">
+                        <div class="flex-grow-1">
+                            <h6 class="card-title  mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                Anatomy of a Phishing Email: Unmasking the Threat
+                            </h6>
+                            <p class="card-text text-secondary fw-light mb-2" style="white-space: normal; line-height: 1;">
+								<small>  Anatomy of a Phishing Email: Unmasking the Threat</small>
+							</p>
+                        </div>
+                        <a asp-action="PhishingEmailArticle" asp-controller="Blogs" class="text-primary text-decoration-none mt-auto">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Article 7 -->
+            <div class="col">
+                <div class="card h-100 articleCard rounded-4">
+                    <img src="~/Images/blog8.jpg" class=" rounded-top-4" alt="Malicious Link Graphic">
+                    <div class="card-body d-flex flex-column">
+                        <div class="flex-grow-1">
+                            <h6 class="card-title  mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                What is a Malicious Link? A Comprehensive Guide
+                            </h6>
+                            <p class="card-text text-secondary fw-light mb-2" style="white-space: normal; line-height: 1;">
+								<small>What is a Malicious Link? A Comprehensive Guide</small>
+							</p>
+                        </div>
+                        <a asp-action="MaliciousLinkArticle" asp-controller="Blogs" class="text-primary text-decoration-none mt-auto">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Article 8 -->
+            <div class="col">
+                <div class="card h-100 articleCard rounded-4">
+                    <img src="~/Images/blog7.jpg" class=" rounded-top-4" alt="Avoid Links Graphic">
+                    <div class="card-body d-flex flex-column">
+                        <div class="flex-grow-1">
+                            <h6 class="card-title  mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                5 Essential Tips for Avoiding Malicious Links
+                            </h6>
+                            <p class="card-text text-secondary fw-light mb-2" style="white-space: normal; line-height: 1;">
+								<small> 5 Essential Tips for Avoiding Malicious Links</small>
+                            </p>
+                        </div>
+                        <a asp-action="AvoidingMaliciousLinksArticle" asp-controller="Blogs" class="text-primary text-decoration-none mt-auto">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<partial name="_ContactUs" />

@@ -1,0 +1,316 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Navbar.css" asp-append-version="true" />
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+
+    <header id="navbar"
+    class="position-fixed w-100 top-0 start-0 z-3 bg-transparent ">
+        <nav class="navbar navbar-expand-sm navbar-light shadow text-white fs-7">
+            <div class="container-fluid d-flex">
+                <a class="d-flex flex-column align-items-center text-decoration-none text-white ms-4"
+                asp-controller="Home"
+                asp-action="Index">
+                    <img src="~/Images/icons8-sports-fishing-60.png"
+                    class="img-small"
+                    alt="" />
+                    <span class="fw-bold">NoPhishing</span>
+                </a>
+
+                <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-center"
+                id="navbarSupportedContent">
+                    <ul class="navbar-nav me-lg-5">
+                        <li class="nav-item mx-1">
+                            <a class="nav-link fw-medium text-white"
+                            asp-controller="Home"
+                            asp-action="Index">Home</a>
+                        </li>
+
+                        <li class="nav-item dropdown mx-1">
+                            <a class="nav-link dropdown-toggle fw-medium text-white"
+                            id="scannerDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                                Scanner
+                            </a>
+                            <ul class="dropdown-menu border-0 shadow">
+                                <li>
+                                    <a class="dropdown-item fw-medium"
+                                    asp-action="Index"
+                                    asp-controller="checkUrl"
+                                    onclick="changeScannerText('URL Scanner')">Scan URL</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item fw-medium"
+                                    onclick="changeScannerText('IP Scanner')">Scan IP</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @* <li class="nav-item mx-1"> *@
+                        @*     <a href="#About" class="nav-link fw-medium text-white" >About</a> *@
+                        @* </li> *@
+                        <li class="nav-item mx-1">
+                            <a class="nav-link fw-medium text-white"
+                            asp-controller="Home"
+                            asp-action="Privacy">Passwords</a>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link fw-medium text-white"
+                               asp-controller="Blogs"
+                               asp-action="Index">Blogs</a>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link fw-medium text-white"
+                            asp-controller="Home"
+                            asp-action="Privacy">Privacy</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="nav-item me-3">
+                        <a class="nav-link position-relative" href="#" id="notificationIcon">
+                            <img src="~/Images/notification.png" alt="Notifications" class="notification-bell" />
+                            <span class="badge notification-badge rounded-circle p-2 py-1 bg-danger position-absolute start-50" id="notificationCount">0</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end end-0 rounded-4 shadow-lg border-0" id="notificationDropdown" style="display: none; width: 350px; max-height: 400px; overflow-y: auto;">
+                            <div class="d-flex justify-content-between align-items-center p-2 border-bottom">
+                                <h6 class="mb-0">Notifications</h6>
+                                <button type="button" class="btn-close btn-sm end-0" id="closeDropdown" aria-label="Close"></button>
+                            </div>
+                            <div  id="notificationList" class="p-2"></div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <img src="~/Images/user.png" alt="User" class="dropdown-toggle user-img" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" />
+                        <ul class="dropdown-menu dropdown-menu-end end-0" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index"> Profile</a></li>
+                            <li>
+                                <form method="post" asp-area="Identity" asp-page="/Account/Logout">
+                                    <button type="submit" class="dropdown-item">Log out</button>
+                                </form>
+                            </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li><a class="dropdown-item" href="#">DashBoard</a></li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a class="dropdown-item"  asp-area="Identity" asp-page="/Account/Manage/History">History</a>
+                                </li>
+                            }
+                            <li><a class="dropdown-item" href="/Home/Index/#FAQ">Help & Support</a></li>
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    @if (ViewData["Title"]?.ToString() == "Home Page")
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-light text-blue ms-auto me-3">
+                            Log in
+                        </a>
+                    }
+                }
+
+
+            </div>
+        </nav>
+    </header>
+
+    @if (@ViewData["Title"] == "Home Page")
+    {
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    }
+    else
+    {
+        <main role="main" class="pb-3 pt-3 mt-5">
+            @RenderBody()
+        </main>
+    }
+    <footer class="bg-light text-dark pt-5 pb-3 d-flex flex-column">
+        <div class="container flex-grow-1">
+            <div class="row">
+                <!-- Branding and Description -->
+                <div class="col-md-4">
+                    <div class="d-flex flex-column mb-3">
+                        <img src="~/Images/fishingg.png"
+                             class="img-small"
+                             alt="NoPhishing Logo" />
+                        <h5 class="fw-bold">NoPhishing</h5>
+                    </div>
+                    <p class="small">
+                        Nowadays, it is easy to fall victim to various scams. <br />
+                        Stay safe with our phishing detection tools.
+                    </p>
+                </div>
+
+                <!-- Other Tools -->
+                <div class="col-md-2">
+                    <h6 class="fw-bold">Links</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a  class="text-dark text-decoration-none">Home</a>
+                        </li>
+                        <li>
+                            <a class="text-dark text-decoration-none">Scanner</a>
+                        </li>
+                        <li>
+                            <a class="text-dark text-decoration-none">Tips</a>
+                        </li>
+                        <li>
+                            <a class="text-dark text-decoration-none">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Company Info -->
+                <div class="col-md-2">
+                    <h6 class="fw-bold">Company</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a  class="text-dark text-decoration-none">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a  class="text-dark text-decoration-none">Terms of Use</a>
+                        </li>
+                        <li>
+                            <a  class="text-dark text-decoration-none">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Discover More -->
+                <div class="col-md-2">
+                    <h6 class="fw-bold">Discover More</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="text-dark text-decoration-none">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-3">
+            <div class="row align-items-center text-center">
+                <!-- Contact Number -->
+                <div class="col-md-4 text-md-start mb-2 mb-md-0">
+                    <i class="fas fa-phone-alt me-2"></i>
+                    <span>(+20)1154904622</span>
+                </div>
+
+                <!-- Contact & Support -->
+                <div class="col-md-4">
+                    <a class="text-decoration-none text-black">
+                        <i class="far fa-comments me-2"></i>
+                        <span>Contact Us</span>&nbsp;|&nbsp;
+                    </a>
+                    <a class="text-decoration-none text-black">
+                        <i class="fas fa-headset me-2"></i>
+                        <span>Get Support</span>
+                    </a>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="col-md-4 text-md-end mt-2 mt-md-0 fs-7">
+                    <a href="https://facebook.com"
+                       target="_blank"
+                       class="text-black text-decoration-none me-3">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://linkedin.com"
+                       target="_blank"
+                       class="text-black text-decoration-none me-3">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://twitter.com"
+                       target="_blank"
+                       class="text-black text-decoration-none me-3">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://youtube.com"
+                       target="_blank"
+                       class="text-black text-decoration-none me-3">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://reddit.com"
+                       target="_blank"
+                       class="text-black text-decoration-none">
+                        <i class="fab fa-reddit-alien"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+             document.addEventListener("DOMContentLoaded", function () {
+            var pageTitle = "@ViewData["Title"]";
+            if (pageTitle == "Home Page") {
+                window.addEventListener("scroll", function () {
+                    var navbar = document.getElementById("navbar");
+                    if (window.scrollY > 650) {
+                        navbar.classList.add("bg-blue", "shadow");
+                        navbar.classList.remove("bg-transparent");
+                    } else {
+                        navbar.classList.add("bg-transparent");
+                        navbar.classList.remove("bg-blue", "shadow");
+                    }
+                });
+            }
+            else
+            {
+                 navbar.classList.add("bg-blue", "shadow");
+                 navbar.classList.remove("bg-transparent");
+            }
+        });
+        function changeScannerText(text) {
+          document.getElementById("scannerDropdown").textContent = text;
+        }
+        document.querySelectorAll(".accordion-button").forEach((button) => {
+          button.addEventListener("click", function () {
+            document.querySelectorAll(".accordion-button").forEach((btn) => {
+              btn.classList.remove("bg-light");
+            });
+            if (!this.classList.contains("collapsed")) {
+              this.classList.add("bg-light");
+            }
+          });
+        });
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/signalr/signalr.min.js"></script> 
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
