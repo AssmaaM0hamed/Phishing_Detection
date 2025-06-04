@@ -28,7 +28,7 @@ namespace Phishing_Detection.Services.UrlMointoring
             while (!stoppingToken.IsCancellationRequested)
             {
                 await MonitorUrlsAsync();
-                await Task.Delay(TimeSpan.FromSeconds(20), stoppingToken); // Runs every hour
+                await Task.Delay(TimeSpan.FromDays(1), stoppingToken); 
             }
         }
         public async Task MonitorUrlsAsync()
